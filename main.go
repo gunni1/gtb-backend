@@ -1,10 +1,31 @@
 package main
 
 import (
+	"flag"
 	"fmt"
+	"log"
+	"net/http"
+
+	"github.com/gorilla/mux"
 )
 
 func main() {
+
+	apiPort := flag.String("apiPort", "7000", "REST API Port")
+	flag.Parse()
+
+	router := mux.NewRouter().StrictSlash(true)
+	router.HandleFunc("/", index)
+
+	fmt.Println("REST API listening on " + *apiPort)
+	log.Fatal(http.ListenAndServe(":"+*apiPort, router))
+}
+
+func index(response http.ResponseWriter, request *http.Request) {
+	fmt.Fprintln(response, "Hello")
+}
+
+func oldmain() {
 	memRepo := MemorizingRepo{}
 	memRepo.trainings = make(map[string]Training)
 	nonMemRepo := NonMemorizingRepo{}
