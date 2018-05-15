@@ -11,8 +11,10 @@ Funktionen:
 
 ## Alle Protokollierten Trainings 
 - Sortierte Übersicht über alle Trainings 
-## Informationen zu Übungen abfragen
+## Informationen zu  einer bestimmten Übungen abfragen
 - z.B. alle Einträge für Liegestützt 
+- Wann das letzte mal <Übung>
+- Wieviel Wiederholungen beim letzten mal <Übung>
 ## Übungen eines Trainings abfragen
 - z.B. alle Übungen eines bestimmten Trainings abfragen
 
