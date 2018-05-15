@@ -6,7 +6,7 @@ import (
 	"gopkg.in/mgo.v2/bson"
 )
 
-type TrainingEntry struct {
+type Session struct {
 	ID        bson.ObjectId `json:"id" bson:"_id,omitempty"`
 	Title     string        `json:"title" bson:"title"`
 	Location  string        `json:"location" bson:"location"`

@@ -5,17 +5,21 @@ import (
 	"fmt"
 	"log"
 	"net/http"
+	"training-service/session"
 
 	"github.com/gorilla/mux"
 )
 
 func main() {
-
+	mongoDbUrl := flag.String("mongodb", "localhost:27017", "Connection String to a MongoDB")
 	apiPort := flag.String("apiPort", "7000", "REST API Port")
+
 	flag.Parse()
 
 	router := mux.NewRouter().StrictSlash(true)
 	router.HandleFunc("/", index)
+
+	sessionRepo := session.MongoDBSessionRepository{dbUrl: mongoDbUrl}
 
 	fmt.Println("REST API listening on " + *apiPort)
 	log.Fatal(http.ListenAndServe(":"+*apiPort, router))
