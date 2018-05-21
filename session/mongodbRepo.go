@@ -16,7 +16,7 @@ type MongoDBSessionRepository struct {
 	dbUrl string
 }
 
-func (repo MongoDBSessionRepository) openDBConnection() mgo.Session {
+func (repo MongoDBSessionRepository) OpenDBConnection(dbUrl string) mgo.Session {
 	log.Println("connect to mongodb using url: " + repo.dbUrl)
 	session, error := mgo.Dial(repo.dbUrl)
 	if error != nil {

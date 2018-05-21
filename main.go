@@ -18,8 +18,13 @@ func main() {
 
 	router := mux.NewRouter().StrictSlash(true)
 	router.HandleFunc("/", index)
+	sessionRepo := session.MongoDBSessionRepository{}
+	sessionRepo.OpenDBConnection(*mongoDbUrl)
 
-	sessionRepo := session.MongoDBSessionRepository{dbUrl: mongoDbUrl}
+	//SessionRepo in einen SessionManager übergeben, Manager arbeitet mit Interface Typen
+	//Am Sessionmanager dann fachfunktionen aufrufen
+
+	sessionManager := SessionManager{}
 
 	fmt.Println("REST API listening on " + *apiPort)
 	log.Fatal(http.ListenAndServe(":"+*apiPort, router))
