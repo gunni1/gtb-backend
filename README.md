@@ -18,3 +18,8 @@ Funktionen:
 ## Übungen eines Trainings abfragen
 - z.B. alle Übungen eines bestimmten Trainings abfragen
 
+# SQL-Sdchema?
+|SessionId|Title|Location|UserId|Begin|End|
+
+
+|PracticeId|SessionId|NameKey|Reps|Duration|
